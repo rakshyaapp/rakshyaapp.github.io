@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Rakshya is an advanced personal safety app with SOS, live tracking, voice triggers, and encrypted emergency response."
+  />
+  <title>Rakshya | Safety. Reimagined.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-glow"></div>
+  <header class="navbar" id="top">
+    <nav class="nav-shell container" aria-label="Main navigation">
+      <a href="#hero" class="brand" aria-label="Rakshya homepage">Rakshya</a>
+      <ul class="nav-links">
+        <li><a href="#story">Story</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#demo">Demo</a></li>
+      </ul>
+      <a href="#download" class="btn btn-nav">Download</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Rakshya v3.0</p>
+          <h1>Safety. Reimagined.</h1>
+          <p class="subtext">
+            One intelligent safety system for urgent moments. Instant SOS, live location intelligence,
+            voice-triggered response, and encrypted evidence capture in one tap.
+          </p>
+          <div class="hero-actions">
+            <a href="#download" class="btn btn-primary">Get Rakshya</a>
+            <a href="#demo" class="btn btn-secondary">Watch Demo</a>
+          </div>
+        </div>
+        <div class="hero-device-wrap reveal">
+          <div class="device-glow"></div>
+          <div class="phone-tilt" id="phoneTilt">
+            <div class="phone-shell">
+              <video src="demo.mp4" autoplay muted loop playsinline aria-label="Rakshya app demo"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="story section">
+      <div class="story-track">
+        <div class="story-sticky container">
+          <div class="story-media">
+            <div class="story-device">
+              <video src="demo.mp4" autoplay muted loop playsinline></video>
+            </div>
+          </div>
+          <div class="story-copy-panel">
+            <p class="story-label">Response Timeline</p>
+            <div class="story-slides" id="storySlides">
+              <article class="story-slide">
+                <h2>One tap activates everything</h2>
+                <p>SOS dispatch, trusted contacts, and location stream activate in a single response flow.</p>
+              </article>
+              <article class="story-slide">
+                <h2>Your voice becomes the trigger</h2>
+                <p>Hidden emergency phrase detection starts response silently when your hands cannot.</p>
+              </article>
+              <article class="story-slide">
+                <h2>Evidence captured instantly</h2>
+                <p>Automatic audio and video recording preserves crucial proof the moment danger appears.</p>
+              </article>
+              <article class="story-slide">
+                <h2>Live intelligence follows you</h2>
+                <p>Background GPS, route deviation checks, and safe-place intelligence keep context current.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features section">
+      <div class="container">
+        <p class="eyebrow reveal">System Features</p>
+        <h2 class="section-title reveal">Designed for real-world emergencies.</h2>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <h3>Smart SOS</h3>
+            <p>Launches a synchronized emergency workflow in one tap for immediate response.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Voice AI</h3>
+            <p>Detects hidden distress phrases and triggers protective actions discreetly.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Evidence Recording</h3>
+            <p>Captures audio and video automatically to preserve a secure incident trail.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Live Tracking</h3>
+            <p>Foreground and background GPS updates stream location with continuity.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Ride Monitoring</h3>
+            <p>Tracks route deviation and trip risks in real time for safer travel.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Check-in System</h3>
+            <p>Scheduled safety check-ins reduce uncertainty and notify contacts automatically.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="security section">
+      <div class="container security-layout reveal">
+        <div>
+          <p class="eyebrow">Privacy by Architecture</p>
+          <h2 class="section-title">Built on serious security, not promises.</h2>
+        </div>
+        <p>
+          Rakshya uses modern end-to-end key exchange with X25519 to protect sensitive signals and incident
+          evidence. Data pathways are designed to minimize exposure while preserving reliable emergency response.
+        </p>
+      </div>
+    </section>
+
+    <section id="demo" class="demo section">
+      <div class="container reveal">
+        <p class="eyebrow">Product Demo</p>
+        <h2 class="section-title">See Rakshya in motion.</h2>
+        <div class="demo-frame">
+          <video controls preload="metadata" playsinline aria-label="Rakshya product demo video">
+            <source src="demo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="download section">
+      <div class="container download-wrap reveal">
+        <h2 class="section-title">Ready when it matters most.</h2>
+        <p>Download Rakshya and build a smarter personal safety layer into every day.</p>
+        <div class="download-actions">
+          <a href="rakshya.apk" class="btn btn-primary" download>Download Android APK</a>
+          <a
+            href="https://www.apple.com/app-store/"
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download for iOS
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rakshya-footer" role="contentinfo" id="footer">
+    <div class="footer-accent-line" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <section class="footer-main">
+        <div class="footer-brand">
+          <a href="#top" class="footer-logo" aria-label="Rakshya home">Rakshya</a>
+          <p class="footer-tagline">Your personal safety companion</p>
+          <p class="footer-description">Intelligent safety infrastructure for everyday and emergency moments.</p>
+        </div>
+
+        <nav class="footer-nav-grid" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#download">Pricing</a></li>
+              <li><a href="#demo">App</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#hero">About</a></li>
+              <li><a href="#download">Careers</a></li>
+              <li><a href="#download">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#demo">Blog</a></li>
+              <li><a href="#download">Help Center</a></li>
+              <li><a href="#security">Safety Tips</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#security">Privacy Policy</a></li>
+              <li><a href="#security">Terms of Service</a></li>
+              <li><a href="#security">Cookies</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <aside class="footer-cta-wrap">
+          <p class="footer-cta-copy">Build your personal safety layer today.</p>
+          <a href="rakshya.apk" class="footer-cta" id="footerCta" download>Download App</a>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <span class="sr-only">Instagram</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4.5" y="4.5" width="15" height="15" rx="4.5"></rect>
+                <circle cx="12" cy="12" r="3.3"></circle>
+                <circle cx="17.2" cy="6.8" r="1"></circle>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter X">
+              <span class="sr-only">Twitter X</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h3.8l4.2 5.6L16.6 4H20l-6.2 7.3L20 20h-3.8L11.7 14l-5 6H3.4l6.8-8L4 4z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub">
+              <span class="sr-only">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.2A10 10 0 0 0 8.8 21c.5.1.7-.2.7-.5v-2c-2.9.7-3.5-1.2-3.5-1.2-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.4 1 2.9.8.1-.7.3-1 .6-1.2-2.3-.3-4.7-1.2-4.7-5A3.9 3.9 0 0 1 7 7.5c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1A9.5 9.5 0 0 1 12 5.4c.7 0 1.5.1 2.2.4 2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.8-2.4 4.7-4.7 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2.2z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <span class="sr-only">LinkedIn</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.3 8.2a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM4.5 9.8H8v10.1H4.5zM10 9.8h3.3v1.4h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.2 2.2 4.2 5v5.5h-3.5V15c0-1.2 0-2.8-1.9-2.8s-2.2 1.4-2.2 2.7v5H10V9.8z"></path>
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <div class="footer-divider" aria-hidden="true"></div>
+
+      <section class="footer-bottom">
+        <p>© 2026 Rakshya. All rights reserved.</p>
+        <p>Rakshya is not a substitute for emergency services.</p>
+      </section>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
