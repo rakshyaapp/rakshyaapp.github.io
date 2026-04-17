@@ -55,11 +55,3 @@ This repository is specifically for the landing page. If you'd like to contribut
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-```
-
-### Tips for your landing page:
-1. **The Demo Video:** Since you have `demo.mp4` in the root, make sure it is linked correctly in your `index.html` using the `<video>` tag so visitors can see the app immediately.
-2. **Download Button:** Use a high-contrast button for your "Download APK" link to ensure people don't miss the main point of the site.
-3. **Google Verification:** I noticed you have a `googlea5b6745752877e72.html` file. This means you've already started the verification process—once that's done, your site should start appearing in Google search results more reliably!
-```
