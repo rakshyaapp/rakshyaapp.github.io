@@ -33,3 +33,33 @@ Rakshya is a mobile application developed to provide [Insert one-sentence purpos
 ├── demo.mp4       # Video demonstration of the app
 ├── favicon.png    # Site icon
 └── LICENSE        # MIT License
+````
+
+## 📥 How to Install (For Users)
+
+1.  Navigate to the **[Releases](https://www.google.com/search?q=https://github.com/rakshyaapp/rakshyaapp.github.io/releases)** section.
+2.  Download the latest `.apk` file.
+3.  On your Android device, enable "Install from Unknown Sources" in settings.
+4.  Open the file and follow the installation prompts.
+
+## 🤝 Contributing
+
+This repository is specifically for the landing page. If you'd like to contribute to the UI/UX of the website:
+
+1.  Fork the repo.
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+```
+
+### Tips for your landing page:
+1. **The Demo Video:** Since you have `demo.mp4` in the root, make sure it is linked correctly in your `index.html` using the `<video>` tag so visitors can see the app immediately.
+2. **Download Button:** Use a high-contrast button for your "Download APK" link to ensure people don't miss the main point of the site.
+3. **Google Verification:** I noticed you have a `googlea5b6745752877e72.html` file. This means you've already started the verification process—once that's done, your site should start appearing in Google search results more reliably!
+```
