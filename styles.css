@@ -250,6 +250,20 @@ video {
 .phone-shell video {
   border-radius: 30px;
 }
+.mini {
+  width: min(100%, 280px);
+  aspect-ratio: 9 / 19.5;
+  margin-inline: auto;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  padding: 8px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 24px 70px rgba(5, 10, 24, 0.64);
+}
+
+.mini video {
+  border-radius: 3px;
+}
 
 .story {
   padding-top: clamp(2rem, 5vw, 4rem);
