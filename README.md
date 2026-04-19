@@ -27,9 +27,10 @@ Rakshya is a mobile application developed to provide [Insert one-sentence purpos
 ## 📂 Project Structure
 
 ```text
-├── index.html     # Main entry point
-├── styles.css     # UI styling
-├── script.js     # Frontend logic
+├── index.html     # Main entry point (landing + blog + Q/A sections)
+├── blog.html      # Redirects to /#blog (legacy URLs)
+├── styles.css     # UI styling (includes blog + Q/A styles)
+├── script.js      # Frontend logic
 ├── demo.mp4       # Video demonstration of the app
 ├── favicon.png    # Site icon
 └── LICENSE        # MIT License
