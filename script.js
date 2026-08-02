@@ -1,6 +1,5 @@
 (() => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   const navbar = document.querySelector(".navbar");
   const hero = document.querySelector("#hero");
   const story = document.querySelector("#story");
