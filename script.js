@@ -13,6 +13,7 @@
   const ctaWrap = document.querySelector(".footer-cta-wrap");
   const navToggle = document.querySelector("#navToggle");
   const navLinks = document.querySelector("#navLinks");
+  const themeToggle = document.querySelector("#themeToggle");
 
   let targetScroll = window.scrollY;
   let smoothScroll = targetScroll;
@@ -99,6 +100,38 @@
     details.forEach((item) => {
       syncState(item);
       item.addEventListener("toggle", () => syncState(item));
+    });
+  }
+
+  function setupThemeToggle() {
+    if (!themeToggle) return;
+
+    const STORAGE_KEY = "rakshya-theme";
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const stored = (() => {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        return null;
+      }
+    })();
+    const initial = stored === "light" || (stored === null && prefersLight) ? "light" : "dark";
+
+    const applyTheme = (theme) => {
+      document.documentElement.setAttribute("data-theme", theme);
+      themeToggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+      try {
+        localStorage.setItem(STORAGE_KEY, theme);
+      } catch (e) {
+        /* ignore storage errors */
+      }
+    };
+
+    applyTheme(initial);
+
+    themeToggle.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      applyTheme(next);
     });
   }
 
@@ -189,6 +222,7 @@
   setupPhoneTilt();
   setupMobileNav();
   setupQaAccordion();
+  setupThemeToggle();
 
   if (footer) {
     window.addEventListener(
