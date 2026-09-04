@@ -87,6 +87,21 @@
     });
   }
 
+  function setupQaAccordion() {
+    const details = document.querySelectorAll(".qa-item");
+    const syncState = (item) => {
+      const summary = item.querySelector("summary");
+      if (summary) {
+        summary.setAttribute("aria-expanded", item.open ? "true" : "false");
+      }
+    };
+
+    details.forEach((item) => {
+      syncState(item);
+      item.addEventListener("toggle", () => syncState(item));
+    });
+  }
+
   function setupPhoneTilt() {
     if (!phoneTilt || prefersReducedMotion) return;
 
@@ -173,6 +188,7 @@
   setupRevealObserver();
   setupPhoneTilt();
   setupMobileNav();
+  setupQaAccordion();
 
   if (footer) {
     window.addEventListener(

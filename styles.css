@@ -44,6 +44,28 @@ body {
   overflow-x: hidden;
 }
 
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.nav-toggle:focus-visible,
+.summary-wrap summary:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
