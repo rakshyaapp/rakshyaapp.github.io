@@ -288,9 +288,10 @@
         <article class="blog-panel reveal">
           <h2>🧠 What is Rakshya App?</h2>
           <p>
-            Rakshya is a personal safety app for women designed to provide fast and reliable
-            emergency assistance. It enables users to send SOS alerts, share live location, and
-            quickly notify trusted contacts during unsafe situations.
+            Rakshya is a comprehensive women's safety Android app with a self-hosted backend. It
+            provides fast emergency assistance through SOS alerts, live GPS location sharing, encrypted
+            video capture, and quick trusted-contact notification. All sensitive data is encrypted
+            on-device with AES-256-GCM, and the backend stores only opaque encrypted blobs.
           </p>
           <div class="inline-links">
             <a href="#hero">👉 Live Demo</a>
@@ -312,19 +313,43 @@
           <div class="feature-grid-blog">
             <div class="feature-item-blog">
               <h3>🚨 1. One-Tap Emergency SOS</h3>
-              <p>Instantly send alerts to emergency contacts with a single tap.</p>
+              <p>Launches a synchronized emergency workflow—SOS dispatch, trusted contacts, and location stream—in a single tap.</p>
             </div>
             <div class="feature-item-blog">
               <h3>📍 2. Live Location Tracking</h3>
-              <p>Share real-time GPS location so others can track your movement during emergencies.</p>
+              <p>Foreground and background GPS updates stream your location with continuity during emergencies.</p>
             </div>
             <div class="feature-item-blog">
-              <h3>🎤 3. Voice Activation (Future Scope)</h3>
-              <p>Trigger alerts using voice commands when manual access is not possible.</p>
+              <h3>🎤 3. Voice Activation</h3>
+              <p>Detects hidden distress phrases and triggers protective actions discreetly when your hands are not free.</p>
             </div>
             <div class="feature-item-blog">
-              <h3>🔐 4. Secure Data Handling</h3>
-              <p>User data and location information are handled with privacy in mind.</p>
+              <h3>📹 4. Encrypted Video Capture</h3>
+              <p>Captures audio and video encrypted on-device with AES-256-GCM to preserve a secure incident trail.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>👥 5. Emergency Contacts</h3>
+              <p>Encrypted contact list of trusted people notified instantly when an incident is reported.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>🚗 6. Ride Monitoring</h3>
+              <p>Tracks route deviation and trip risks in real time for safer travel.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>✅ 7. Safety Check-ins</h3>
+              <p>Scheduled safety check-ins that auto-notify contacts if you miss one.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>🏥 8. Safe Places</h3>
+              <p>Discovers nearby hospitals, police stations, and fire stations in a crisis.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>⚖️ 9. Legal Help</h3>
+              <p>Quick access to legal resources and support contacts when you need them.</p>
+            </div>
+            <div class="feature-item-blog">
+              <h3>📞 10. Fake Call</h3>
+              <p>Simulates an incoming call to discreetly escape uncomfortable situations.</p>
             </div>
           </div>
         </article>
@@ -375,10 +400,11 @@
             <h2>🚧 Challenges During Development</h2>
             <p>Building a real-time safety app comes with challenges:</p>
             <ul class="blog-list">
-              <li>Accurate GPS tracking</li>
-              <li>Mobile permission handling</li>
-              <li>Reliable alert delivery</li>
-              <li>Keeping the UI simple under stress</li>
+              <li>Migrating from a broken Supabase-backed architecture to a self-hosted backend</li>
+              <li>Implementing on-device AES-256-GCM encryption with Android Keystore</li>
+              <li>Google sign-in via Credential Manager with proper token exchange</li>
+              <li>Foreground service lifecycle management for SOS and location tracking</li>
+              <li>Keeping the UI simple and responsive under stress conditions</li>
             </ul>
           </article>
 
@@ -386,10 +412,11 @@
             <h2>🔮 Future Improvements</h2>
             <p>Planned upgrades for Rakshya include:</p>
             <ul class="blog-list">
-              <li>AI-based threat detection</li>
-              <li>Integration with emergency services</li>
-              <li>Wearable device support</li>
-              <li>Improved voice-trigger system</li>
+              <li>v1.2: Restore SOS screen and location tracking</li>
+              <li>v1.3: Restore ride monitoring and check-ins</li>
+              <li>v1.4: Restore emergency contacts and video capture</li>
+              <li>v1.5: Restore safe places, legal help, and fake call</li>
+              <li>v2.0: Production hardening, release signing, Play Store submission</li>
             </ul>
           </article>
         </div>
