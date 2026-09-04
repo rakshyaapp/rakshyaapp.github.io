@@ -449,8 +449,10 @@
           <details class="qa-item" open>
             <summary>What is Rakshya app?</summary>
             <p>
-              Rakshya is a personal safety app focused on fast emergency action through SOS alerts,
-              live location sharing, and quick trusted-contact notification.
+              Rakshya is a comprehensive women's safety Android app with a self-hosted Node.js backend.
+              It provides SOS alerts, live GPS tracking, encrypted video capture, emergency contacts,
+              ride monitoring, check-ins, safe places, legal help, and fake call—all with on-device
+              AES-256-GCM encryption.
             </p>
           </details>
           <details class="qa-item">
@@ -463,8 +465,9 @@
           <details class="qa-item">
             <summary>How does SOS work in Rakshya?</summary>
             <p>
-              SOS sends an emergency alert, shares live location, and notifies selected contacts in
-              one emergency flow.
+              SOS activates a synchronized emergency workflow: it creates an incident on the backend,
+              records SOS-flagged GPS locations every 30 seconds, triggers an emergency call to 112,
+              and shows a full-screen alarm notification—all in one tap.
             </p>
           </details>
           <details class="qa-item">
@@ -486,15 +489,19 @@
           <details class="qa-item">
             <summary>What challenges are involved in development?</summary>
             <p>
-              Real-time GPS accuracy, mobile permissions, reliable alert delivery, and keeping UI
-              simple in high-stress moments.
+              Migrating from a broken Supabase-backed architecture to a self-hosted backend,
+              implementing on-device AES-256-GCM encryption with Android Keystore, Google sign-in
+              via Credential Manager with proper token exchange, and managing foreground service
+              lifecycles for SOS and location tracking.
             </p>
           </details>
           <details class="qa-item">
             <summary>What future upgrades are planned?</summary>
             <p>
-              AI threat detection, emergency-service integration, wearable support, and better
-              voice-trigger activation.
+              v1.2: Restore SOS screen and location tracking. v1.3: Restore ride monitoring and
+              check-ins. v1.4: Restore emergency contacts and video capture. v1.5: Restore safe
+              places, legal help, and fake call. v2.0: Production hardening, release signing, and
+              Play Store submission.
             </p>
           </details>
           <details class="qa-item">
@@ -508,9 +515,9 @@
           <details class="qa-item">
             <summary>Does Rakshya record audio or video during an emergency?</summary>
             <p>
-              The product is designed to capture incident evidence automatically when SOS runs, so
-              trusted contacts and your own records have context. Exact behavior depends on device
-              permissions and the build you install.
+              Yes. Rakshya captures video using CameraX and encrypts it on-device with AES-256-GCM
+              before backing up encrypted bytes to the backend. The server never sees plaintext—only
+              opaque encrypted blobs. The encrypted video can be downloaded and decrypted on-device.
             </p>
           </details>
           <details class="qa-item">
@@ -524,16 +531,17 @@
           <details class="qa-item">
             <summary>What is ride monitoring or route deviation?</summary>
             <p>
-              During trips, Rakshya can watch your live route against an expected path and surface risk
-              when movement looks off-course—useful for rides, commutes, and travel where detours
-              matter.
+              During trips, Rakshya tracks your live route against an expected path using Haversine
+              distance calculations. If your movement deviates off-course, it detects the risk in
+              real time—useful for rides, commutes, and travel where detours matter.
             </p>
           </details>
           <details class="qa-item">
             <summary>How do safety check-ins work?</summary>
             <p>
-              You can schedule check-ins so the app prompts you to confirm you are safe; if you miss
-              one, your trusted contacts can be notified automatically to reduce uncertainty.
+              You schedule safety check-ins through CheckInService, a foreground service that prompts
+              you to confirm you are safe. If you miss a check-in, your trusted contacts can be
+              notified automatically to reduce uncertainty.
             </p>
           </details>
           <details class="qa-item">
