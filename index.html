@@ -249,6 +249,30 @@
       </div>
     </section>
 
+    <section id="architecture" class="architecture section">
+      <div class="container">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 class="section-title reveal">Your data stays yours. Your own backend serves you.</h2>
+        <div class="arch-grid">
+          <article class="arch-step reveal">
+            <span class="arch-num">01</span>
+            <h3>Encrypt on device</h3>
+            <p>All sensitive data is encrypted with AES-256-GCM, with keys stored in the Android Keystore.</p>
+          </article>
+          <article class="arch-step reveal">
+            <span class="arch-num">02</span>
+            <h3>Send only blobs</h3>
+            <p>Only opaque encrypted blobs travel to the server—never readable plaintext.</p>
+          </article>
+          <article class="arch-step reveal">
+            <span class="arch-num">03</span>
+            <h3>Self-hosted backend</h3>
+            <p>A Node.js + Express + SQLite backend you control stores the encrypted bytes for backup and sync.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="demo" class="demo section">
       <div class="container reveal">
         <p class="eyebrow">Product Demo</p>

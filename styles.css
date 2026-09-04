@@ -1229,3 +1229,61 @@ video {
     grid-template-columns: 1fr;
   }
 }
+
+/* --- Architecture / privacy panel --- */
+
+.architecture .section-title {
+  max-width: 24ch;
+}
+
+.arch-grid {
+  margin-top: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.arch-step {
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  min-height: 180px;
+  transition: transform 280ms var(--ease-out), border-color 280ms var(--ease-out), box-shadow 280ms var(--ease-out);
+}
+
+.arch-step:hover {
+  transform: translate3d(0, -6px, 0);
+  border-color: rgba(160, 194, 255, 0.45);
+  box-shadow: 0 15px 40px rgba(30, 47, 82, 0.34);
+}
+
+.arch-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  color: #041128;
+  background: linear-gradient(140deg, rgba(145, 175, 255, 0.92), rgba(100, 223, 255, 0.92));
+}
+
+.arch-step h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.arch-step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+}
