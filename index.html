@@ -212,8 +212,9 @@
           <h2 class="section-title">Built on serious security, not promises.</h2>
         </div>
         <p>
-          Rakshya uses modern end-to-end key exchange with X25519 to protect sensitive signals and incident
-          evidence. Data pathways are designed to minimize exposure while preserving reliable emergency response.
+          Rakshya encrypts all sensitive data on-device with AES-256-GCM, with keys stored in the
+          Android Keystore. The backend stores only opaque encrypted blobs and never sees plaintext,
+          minimizing data exposure while preserving reliable emergency response.
         </p>
       </div>
     </section>
@@ -472,8 +473,9 @@
           <details class="qa-item">
             <summary>How does Rakshya protect SOS and incident data?</summary>
             <p>
-              Sensitive signals and evidence use modern cryptography, including X25519 key exchange, so
-              data stays protected in transit while still supporting reliable emergency delivery.
+              All sensitive data is encrypted on-device with AES-256-GCM using keys stored in the
+              Android Keystore. The backend stores only opaque encrypted blobs and never has access
+              to plaintext, so your data stays protected even during emergency delivery.
             </p>
           </details>
           <details class="qa-item">
