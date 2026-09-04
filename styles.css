@@ -100,6 +100,7 @@ video {
 }
 
 .nav-shell {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -135,6 +136,12 @@ video {
 }
 
 .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-links ul {
   list-style: none;
   display: flex;
   gap: 1.2rem;
@@ -150,6 +157,45 @@ video {
 
 .nav-links a:hover {
   color: #ffffff;
+}
+
+.nav-download {
+  display: none;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 250ms var(--ease-out), opacity 200ms ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .btn {
@@ -702,6 +748,58 @@ video {
 
 @media (max-width: 980px) {
   .nav-links {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(10, 12, 20, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out), visibility 250ms;
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .nav-links ul li a {
+    display: block;
+    padding: 0.7rem 0.85rem;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .nav-links ul li a:hover {
+    background: var(--surface);
+  }
+
+  .nav-download {
+    display: inline-flex;
+    margin-top: 0.5rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-cta {
     display: none;
   }
 

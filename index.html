@@ -101,15 +101,29 @@
         <img src="favicon.png" alt="Rakshya logo" class="brand-logo" />
         <span>Rakshya</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#story">Story</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#demo">Demo</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#qa">Q/A</a></li>
-      </ul>
-      <a href="#download" class="btn btn-nav">Download</a>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#qa">Q/A</a></li>
+        </ul>
+        <a href="#download" class="btn btn-nav nav-download">Download</a>
+      </div>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#download" class="btn btn-nav nav-cta">Download</a>
     </nav>
   </header>
 

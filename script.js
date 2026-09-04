@@ -11,6 +11,8 @@
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
   const footer = document.querySelector(".rakshya-footer");
   const ctaWrap = document.querySelector(".footer-cta-wrap");
+  const navToggle = document.querySelector("#navToggle");
+  const navLinks = document.querySelector("#navLinks");
 
   let targetScroll = window.scrollY;
   let smoothScroll = targetScroll;
@@ -56,6 +58,33 @@
     );
 
     revealNodes.forEach((node) => observer.observe(node));
+  }
+
+  function setupMobileNav() {
+    if (!navToggle || !navLinks) return;
+
+    const setMenuState = (open) => {
+      navToggle.classList.toggle("is-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navLinks.classList.toggle("is-open", open);
+    };
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      setMenuState(!isOpen);
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        setMenuState(false);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (navToggle.getAttribute("aria-expanded") === "true" && !navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+        setMenuState(false);
+      }
+    });
   }
 
   function setupPhoneTilt() {
@@ -143,6 +172,7 @@
   setupAnchorScroll();
   setupRevealObserver();
   setupPhoneTilt();
+  setupMobileNav();
 
   if (footer) {
     window.addEventListener(
