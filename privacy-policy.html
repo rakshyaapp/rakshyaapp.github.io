@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character Encoding & Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & Meta Information -->
+  <meta name="description" content="Rakshya Privacy Policy. Learn what data the app collects, how it is encrypted on-device, how it is used, and the rights you hold over your information." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://rakshyaapp.github.io/privacy-policy.html" />
+
+  <!-- Page Title -->
+  <title>Privacy Policy | Rakshya Global Safety App</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons & Stylesheets -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-glow"></div>
+  <header class="navbar" id="top">
+    <nav class="nav-shell container" aria-label="Main navigation">
+      <a href="index.html" class="brand" aria-label="Rakshya homepage">
+        <img src="favicon.png" alt="Rakshya logo" class="brand-logo" />
+        <span>Rakshya</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="index.html#story">Story</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#security">Security</a></li>
+          <li><a href="index.html#demo">Demo</a></li>
+          <li><a href="index.html#blog">Blog</a></li>
+          <li><a href="index.html#qa">Q/A</a></li>
+        </ul>
+        <a href="index.html#download" class="btn btn-nav nav-download">Download</a>
+      </div>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="index.html#download" class="btn btn-nav nav-cta">Download</a>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Toggle color theme"
+        aria-pressed="false"
+        title="Toggle light / dark theme"
+      >
+        <span class="theme-icon-moon" aria-hidden="true"></span>
+        <span class="theme-icon-sun" aria-hidden="true"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section blog-hero">
+      <div class="container">
+        <p class="eyebrow">Legal</p>
+        <h1 class="blog-title">Privacy Policy</h1>
+        <p class="blog-subtext">Effective date: September 25, 2026. This policy explains how the Rakshya app collects, protects, and handles your information.</p>
+      </div>
+    </section>
+
+    <section class="section blog-body">
+      <div class="container blog-stack">
+        <article class="blog-panel">
+          <h2>1. Overview</h2>
+          <p>
+            Rakshya is a personal safety app designed to help you alert the people you trust and share
+            your location in an emergency. Privacy is built into the app's architecture: sensitive data
+            is encrypted on-device before it ever leaves your phone. This policy describes what
+            information the app collects, why it is collected, and the choices you have.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>2. Information We Collect</h2>
+          <ul class="blog-list">
+            <li><strong>Account information</strong> — when you sign in with Google, we receive your Google account name, email address, and profile picture so you can use the app.</li>
+            <li><strong>Profile information</strong> — information you choose to add, such as a phone number and bio.</li>
+            <li><strong>Emergency contacts</strong> — the contacts you add for emergency notification. These are encrypted on-device.</li>
+            <li><strong>Location data</strong> — GPS location while you use location features, background tracking you start, and SOS-flagged locations during an incident.</li>
+            <li><strong>Incident and SOS data</strong> — details of incidents you start, including timestamps and location shared to your trusted contacts.</li>
+            <li><strong>Audio and video recordings</strong> — recordings you capture as evidence during an emergency, encrypted on-device.</li>
+            <li><strong>Ride and check-in data</strong> — ride routes, route-deviation events, and safety check-ins you schedule.</li>
+          </ul>
+        </article>
+
+        <article class="blog-panel">
+          <h2>3. How We Use Your Information</h2>
+          <p>
+            We use the information above to provide and operate the app, including: allowing sign-in and
+            data restore, sending SOS alerts and location to your emergency contacts, recording and
+            encrypting incident evidence, tracking rides and check-ins, discovering nearby safe places,
+            and maintaining the security, safety, and integrity of the service.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>4. Encryption and On-Device Protection</h2>
+          <p>
+            Rakshya is built on a privacy-by-architecture model:
+          </p>
+          <ul class="blog-list">
+            <li>All sensitive data is encrypted on-device with AES-256-GCM.</li>
+            <li>Encryption keys are stored only in the Android Keystore on your device — they never leave your phone.</li>
+            <li>Your self-hosted backend stores only opaque encrypted blobs and never receives plaintext data.</li>
+            <li>Only you can decrypt your data, including videos recorded during emergencies.</li>
+          </ul>
+        </article>
+
+        <article class="blog-panel">
+          <h2>5. Third-Party Services</h2>
+          <ul class="blog-list">
+            <li><strong>Google</strong> — Google sign-in via Credential Manager. Google handles authentication and provides basic account details you authorize.</li>
+            <li><strong>Self-hosted backend</strong> — a Node.js + Express + SQLite backend you control stores encrypted backup blobs and profile fields.</li>
+            <li><strong>OpenStreetMap / Overpass</strong> — used to discover nearby hospitals, clinics, police, and fire stations through a backend proxy.</li>
+          </ul>
+          <p>These services run under their own privacy policies, and we limit what is shared with each to the minimum needed.</p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>6. Sharing Your Information</h2>
+          <p>
+            Rakshya does not sell your personal information. We share information only in these cases:
+          </p>
+          <ul class="blog-list">
+            <li><strong>With your emergency contacts</strong> — when you activate SOS or share a live location, your chosen contacts see your alert and location.</li>
+            <li><strong>With emergency services</strong> — when you call emergency numbers (for example 112) from the app, your call and any details you choose to disclose go to those services.</li>
+            <li><strong>With service providers you operate</strong> — the self-hosted backend you run for backup and sync receives only encrypted blobs.</li>
+            <li><strong>To comply with law</strong> — where required by law, legal process, or to protect rights and safety.</li>
+          </ul>
+        </article>
+
+        <article class="blog-panel">
+          <h2>7. Data Retention</h2>
+          <p>
+            Encrypted backup blobs and profile data are retained for as long as your account is active.
+            Recordings, incident data, and location streams tied to an incident are kept as long as you
+            choose to keep them. You can delete data in-app or by requesting deletion, details below.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>8. Your Privacy Rights</h2>
+          <ul class="blog-list">
+            <li><strong>Access</strong> — request a summary of the data we hold.</li>
+            <li><strong>Correction</strong> — update your profile data in-app at any time.</li>
+            <li><strong>Deletion</strong> — delete your data in-app, or request account deletion and removal of backend blobs.</li>
+            <li><strong>Data portability</strong> — your encrypted blobs can be exported and decrypted on your device.</li>
+            <li><strong>Withdrawing consent</strong> — stop location sharing, tracking, and recording at any time from the app.</li>
+          </ul>
+          <p>To exercise any of these rights, contact us at <a href="mailto:rakshyaapp@gmail.com">rakshyaapp@gmail.com</a>.</p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>9. Children's Privacy</h2>
+          <p>
+            Rakshya is intended for people who need personal safety support and is not directed at
+            children. We do not knowingly collect personal information from children. If you believe a
+            child has provided us with personal information, contact us and we will delete it.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>10. Security</h2>
+          <p>
+            We use strong technical safeguards: AES-256-GCM on-device encryption with keys in the
+            Android Keystore, HTTPS for all network communication, server-side verification of Google
+            ID tokens, and session JWTs. The backend stores only opaque encrypted blobs, so even if it
+            were compromised, your plaintext data remains unreadable.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>11. Changes to This Policy</h2>
+          <p>
+            We may update this policy as the app evolves. Material changes will be reflected on this
+            page with a new effective date. Significant changes will also be announced through the app
+            or on rakshyaapp.github.io.
+          </p>
+        </article>
+
+        <article class="blog-panel">
+          <h2>12. Contact Us</h2>
+          <p>
+            If you have questions about this policy or your data, contact:
+            <a href="mailto:rakshyaapp@gmail.com">rakshyaapp@gmail.com</a>.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rakshya-footer" role="contentinfo" id="footer">
+    <div class="footer-accent-line" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <section class="footer-main">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Rakshya home">
+            <img src="favicon.png" alt="Rakshya logo" class="footer-logo-icon" />
+            <span>Rakshya</span>
+          </a>
+          <p class="footer-tagline">Your personal safety companion</p>
+          <p class="footer-description">Intelligent safety infrastructure for everyday and emergency moments.</p>
+        </div>
+
+        <nav class="footer-nav-grid" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#demo">App</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="index.html#hero">About</a></li>
+              <li><a href="https://www.instagram.com/rakshya__app/">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="index.html#blog">Blog</a></li>
+              <li><a href="index.html#qa">Q/A</a></li>
+              <li><a href="index.html#download">Help Center</a></li>
+              <li><a href="index.html#security">Safety Tips</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="data-policy.html">Data Policy</a></li>
+              <li><a href="index.html#security">Terms of Service</a></li>
+              <li><a href="index.html#security">Cookies</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <aside class="footer-cta-wrap">
+          <p class="footer-cta-copy">Build your personal safety layer today.</p>
+          <a href="index.html#download" class="footer-cta" id="footerCta">Download App</a>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="mailto:rakshyaapp@gmail.com" class="social-link" aria-label="Gmail">
+              <span class="sr-only">Gmail</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/rakshya__app/" class="social-link" aria-label="Instagram">
+              <span class="sr-only">Instagram</span>
+              <svg  viewBox="0 0 24 24">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"></path>
+              </svg>
+            </a>
+            <a href="https://github.com/proobker" class="social-link" aria-label="GitHub">
+              <span class="sr-only">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.2A10 10 0 0 0 8.8 21c.5.1.7-.2.7-.5v-2c-2.9.7-3.5-1.2-3.5-1.2-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.4 1 2.9.8.1-.7.3-1 .6-1.2-2.3-.3-4.7-1.2-4.7-5A3.9 3.9 0 0 1 7 7.5c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1A9.5 9.5 0 0 1 12 5.4c.7 0 1.5.1 2.2.4 2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.8-2.4 4.7-4.7 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2.2z"></path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/rabi-dahal/" class="social-link" aria-label="LinkedIn">
+              <span class="sr-only">LinkedIn</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.3 8.2a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM4.5 9.8H8v10.1H4.5zM10 9.8h3.3v1.4h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.2 2.2 4.2 5v5.5h-3.5V15c0-1.2 0-2.8-1.9-2.8s-2.2 1.4-2.2 2.7v5H10V9.8z"></path>
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <div class="footer-divider" aria-hidden="true"></div>
+
+      <section class="footer-bottom">
+        <p>© 2026 Rakshya. All rights reserved.</p>
+        <p>Rakshya is not a substitute for emergency services.</p>
+      </section>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
