@@ -35,6 +35,8 @@ Rakshya encrypts all sensitive data on-device with **AES-256-GCM**, with keys st
 ```text
 ├── index.html     # Main entry point (hero, features, demo, roadmap, blog, Q/A)
 ├── blog.html      # Redirects to /#blog (legacy URLs)
+├── privacy-policy.html  # Privacy Policy page
+├── data-policy.html     # Data Policy page
 ├── styles.css     # UI styling (includes blog + Q/A styles)
 ├── script.js      # Frontend logic
 ├── demo.mp4       # Video demonstration of the app
