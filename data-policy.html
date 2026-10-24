@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO & Meta Information -->
-  <meta name="description" content="Rakshya Data Policy. Details on what data the app collects, how it is processed, where it is stored, how long it is kept, and how you can delete it." />
+  <meta name="description" content="Rakshyaa Data Policy. Details on what data the app collects, how it is processed, where it is stored, how long it is kept, and how you can delete it." />
   <meta name="robots" content="index,follow" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://rakshyaapp.github.io/data-policy.html" />
 
   <!-- Page Title -->
-  <title>Data Policy | Rakshya Global Safety App</title>
+  <title>Data Policy | Rakshyaa Global Safety App</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,9 +28,9 @@
   <div class="page-glow"></div>
   <header class="navbar" id="top">
     <nav class="nav-shell container" aria-label="Main navigation">
-      <a href="index.html" class="brand" aria-label="Rakshya homepage">
-        <img src="favicon.png" alt="Rakshya logo" class="brand-logo" />
-        <span>Rakshya</span>
+      <a href="index.html" class="brand" aria-label="Rakshyaa homepage">
+        <img src="favicon.png" alt="Rakshyaa logo" class="brand-logo" />
+        <span>Rakshyaa</span>
       </a>
       <div class="nav-links" id="navLinks">
         <ul>
@@ -73,7 +73,7 @@
       <div class="container">
         <p class="eyebrow">Legal</p>
         <h1 class="blog-title">Data Policy</h1>
-        <p class="blog-subtext">Effective date: September 25, 2026. This policy explains how Rakshya collects, processes, stores, and deletes your data.</p>
+        <p class="blog-subtext">Effective date: October 24, 2026. This policy explains how Rakshyaa collects, processes, stores, and deletes your data.</p>
       </div>
     </section>
 
@@ -82,7 +82,7 @@
         <article class="blog-panel">
           <h2>1. What This Policy Covers</h2>
           <p>
-            This Data Policy describes how your personal data moves through Rakshya: how it is
+            This Data Policy describes how your personal data moves through Rakshyaa: how it is
             collected, processed, stored, transferred, retained, and deleted. It works together with
             our <a href="privacy-policy.html">Privacy Policy</a>, which explains your privacy rights
             and how we protect your information.
@@ -96,8 +96,8 @@
             <li><strong>Profile data</strong> — phone number and bio you add to your profile.</li>
             <li><strong>Contact data</strong> — emergency contacts you add for notifications.</li>
             <li><strong>Location data</strong> — GPS fixes collected during active tracking, background tracking, and SOS incidents.</li>
-            <li><strong>Incident data</strong> — SOS events, timestamps, and incident logs you create.</li>
-            <li><strong>Media data</strong> — audio and video recordings captured as evidence.</li>
+            <li><strong>Incident data</strong> — SOS events with status, location coordinates, and timestamps. When you are signed in, these are reported to our backend.</li>
+            <li><strong>Media data</strong> — video recordings captured as evidence.</li>
             <li><strong>Trip and ride data</strong> — routes, route deviations, and safe-zone alerts.</li>
             <li><strong>Check-in data</strong> — scheduled check-ins, grace periods, and confirmations.</li>
           </ul>
@@ -109,51 +109,53 @@
           <ul class="blog-list">
             <li><strong>By your explicit action</strong> — when you enter a contact, start a ride, schedule a check-in, or record video.</li>
             <li><strong>By sensors you approve</strong> — GPS and microphone/camera access are always permission-gated and only used when you enable a feature.</li>
-            <li><strong>Through your account sync</strong> — on sign-in, Rakshya pulls your profile and encrypted backup blobs from your backend so data survives reinstalls.</li>
+            <li><strong>Through your account sync</strong> — when you sign in with Google and turn on backup, Rakshyaa uploads your encrypted data and keeps your profile on our backend. Backups can only be decrypted by the same installation and do not survive a reinstall.</li>
           </ul>
         </article>
 
         <article class="blog-panel">
           <h2>4. How Data Is Processed and Stored</h2>
           <p>
-            Rakshya stores sensitive data on-device and encrypts it with AES-256-GCM. Encryption keys
-            live only in the Android Keystore. The self-hosted backend stores only opaque encrypted
-            blobs and profile fields — it never receives or reads plaintext. SQLite is used for local
-            data, and the backend uses SQLite plus disk files for encrypted backups.
+            Rakshyaa stores sensitive data on-device and encrypts it with AES-256-GCM. Encryption keys
+            live only in the Android Keystore. Backups are encrypted before they are uploaded, so our
+            servers cannot read their contents. Your account profile (name, email, profile picture,
+            phone, bio), incident reports, and backup metadata (names, sizes, timestamps) are stored
+            on our backend and are readable by it.
           </p>
         </article>
 
         <article class="blog-panel">
           <h2>5. Where Data Is Stored</h2>
-          <p>
-            Data lives in two places:
-          </p>
           <ul class="blog-list">
-            <li><strong>On your device</strong> — local database, encrypted files, and Android Keystore keys.</li>
-            <li><strong>On the backend you control</strong> — your own self-hosted Node.js backend stores encrypted blobs and profile fields. You choose and operate that backend.</li>
+            <li><strong>On your device</strong> — encrypted app data, encrypted videos, and Android Keystore keys.</li>
+            <li><strong>Cloudflare (Workers and D1)</strong> — our backend and database: account profile, incident reports, and backup metadata.</li>
+            <li><strong>Cloudinary</strong> — encrypted backup files and encrypted videos, stored as private, access-controlled objects.</li>
           </ul>
           <p>
-            Because the backend is self-hosted, you decide where it runs and who can access it.
+            If you use the app without signing in, your data stays on your device and is not sent to our backend.
           </p>
         </article>
 
         <article class="blog-panel">
           <h2>6. How Data Is Shared</h2>
           <ul class="blog-list">
-            <li><strong>Emergency contacts</strong> — see alerts and location only when you activate SOS or share live tracking.</li>
+            <li><strong>Emergency contacts</strong> — the app prepares SMS messages with your location. You choose whether to send them through your messaging app.</li>
             <li><strong>Emergency services</strong> — receive your call and whatever you disclose during an emergency call.</li>
             <li><strong>Google</strong> — handles authentication; we receive only the account details you authorize.</li>
-            <li><strong>OpenStreetMap / Overpass</strong> — query for nearby safe places through a backend proxy.</li>
+            <li><strong>OpenStreetMap / Overpass</strong> — receives your coordinates, sent through our backend, to find nearby safe places.</li>
+            <li><strong>Rakshyaa operators</strong> — can view active incident reports (location and time) in an internal portal.</li>
+            <li><strong>Cloudflare and Cloudinary</strong> — process data only to host and store the service.</li>
           </ul>
-          <p>Your plaintext data is never sold and never sent to the backend.</p>
+          <p>Your data is never sold or used for advertising.</p>
         </article>
 
         <article class="blog-panel">
           <h2>7. How Long Data Is Kept</h2>
           <ul class="blog-list">
-            <li>Profile and encrypted backup blobs are kept while your account is active.</li>
-            <li>Incident logs, recordings, and location streams are kept as long as you choose to keep them.</li>
-            <li>Location data not tied to an incident is stored only for the features that require it.</li>
+            <li>Your profile, incident reports, and encrypted backups are kept while your account is active.</li>
+            <li>On your device, the app keeps your most recent 500 location log entries.</li>
+            <li>Deleting a video in the app removes it from your device. A backed-up copy may remain until you delete your account.</li>
+            <li>Our hosting providers may keep their own short-term logs and backups.</li>
           </ul>
         </article>
 
@@ -162,11 +164,10 @@
           <p>You can delete your data in several ways:</p>
           <ul class="blog-list">
             <li>Delete individual records (contacts, rides, check-ins, recordings) from within the app.</li>
-            <li>Stop and clear background tracking from the app's settings.</li>
-            <li>Delete your profile and request removal of your encrypted blobs from the backend.</li>
-            <li>Contact <a href="mailto:rakshyaapp@gmail.com">rakshyaapp@gmail.com</a> to request account deletion.</li>
+            <li>Use "Delete account and data" in the app's Profile and Settings screen. This removes your profile, incident reports, and backups from our servers, then clears the app on this device.</li>
+            <li>Email <a href="mailto:rakshyaapp@gmail.com">rakshyaapp@gmail.com</a> to request account deletion if you no longer have the app.</li>
           </ul>
-          <p>After deletion, your encrypted blobs are removed from the backend and cannot be restored.</p>
+          <p>Deleted account data cannot be restored.</p>
         </article>
 
         <article class="blog-panel">
@@ -174,8 +175,8 @@
           <ul class="blog-list">
             <li>On-device AES-256-GCM encryption with keys in the Android Keystore.</li>
             <li>HTTPS for all network communication.</li>
-            <li>Server-side verification of Google ID tokens and short-lived session JWTs.</li>
-            <li>Opaque encrypted blobs on the backend mean plaintext is unreadable even if the backend is compromised.</li>
+            <li>Server-side verification of Google ID tokens and signed session tokens.</li>
+            <li>Backup contents stay unreadable even if our storage is compromised. Profile and incident data is protected by access controls but is not end-to-end encrypted.</li>
           </ul>
         </article>
 
@@ -183,9 +184,9 @@
           <h2>10. Your Controls and Choices</h2>
           <ul class="blog-list">
             <li>Grant or revoke location, microphone, and camera permissions at any time from Android settings.</li>
-            <li>Choose which contacts are notified in an incident.</li>
+            <li>Choose which contacts receive the SOS messages you send.</li>
             <li>Turn background tracking on or off.</li>
-            <li>Export and decrypt evidence that belongs to you on your device.</li>
+            <li>Turn cloud backup on or off in Profile and Settings.</li>
           </ul>
         </article>
 
@@ -213,9 +214,9 @@
     <div class="footer-inner">
       <section class="footer-main">
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="Rakshya home">
-            <img src="favicon.png" alt="Rakshya logo" class="footer-logo-icon" />
-            <span>Rakshya</span>
+          <a href="index.html" class="footer-logo" aria-label="Rakshyaa home">
+            <img src="favicon.png" alt="Rakshyaa logo" class="footer-logo-icon" />
+            <span>Rakshyaa</span>
           </a>
           <p class="footer-tagline">Your personal safety companion</p>
           <p class="footer-description">Intelligent safety infrastructure for everyday and emergency moments.</p>
@@ -291,8 +292,8 @@
       <div class="footer-divider" aria-hidden="true"></div>
 
       <section class="footer-bottom">
-        <p>© 2026 Rakshya. All rights reserved.</p>
-        <p>Rakshya is not a substitute for emergency services.</p>
+        <p>© 2026 Rakshyaa. All rights reserved.</p>
+        <p>Rakshyaa is not a substitute for emergency services.</p>
       </section>
     </div>
   </footer>

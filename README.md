@@ -1,33 +1,32 @@
-# Rakshya App Landing Page 🛡️
+# Rakshyaa App Landing Page 🛡️
 
-The official landing page for **Rakshya**, hosted at [rakshyaapp.github.io](https://rakshyaapp.github.io). Rakshya is a global personal safety app that combines SOS alerts, voice triggers, live location tracking, and encrypted emergency response. This site is the central hub for users to learn about the app, watch the demo, and download the latest Android release.
+The official landing page for **Rakshyaa**, hosted at [rakshyaapp.github.io](https://rakshyaapp.github.io). Rakshyaa is a global personal safety app that combines an SOS countdown, live location tracking, and encrypted evidence capture. This site is the central hub for users to learn about the app, watch the demo, and get it on Google Play.
 
 ## 🚀 Features
 
-- **Smart SOS** — Launches a synchronized emergency workflow in one tap for immediate response.
-- **Voice AI** — Detects hidden distress phrases and triggers protective actions discreetly.
-- **Evidence Recording** — Captures audio and video automatically to preserve a secure incident trail.
-- **Live Tracking** — Foreground and background GPS updates stream location with continuity.
-- **Ride Monitoring** — Tracks route deviation and trip risks in real time for safer travel.
-- **Check-in System** — Scheduled safety check-ins reduce uncertainty and notify contacts automatically.
-- **Emergency Contacts** — An encrypted list of trusted people notified instantly during an incident.
+- **Smart SOS** — A cancellable countdown that prepares an SMS with your location and a call for your trusted contacts, which you send yourself.
+- **Evidence Recording** — Record video that is encrypted on-device, with optional encrypted cloud backup.
+- **Live Tracking** — Foreground and background GPS with a private, encrypted location history.
+- **Ride Monitoring** — Alerts you when your route moves more than 300 m away from where you have been.
+- **Check-in System** — Scheduled check-ins that remind you to message your contacts if you miss one.
+- **Emergency Contacts** — An encrypted list of trusted people, ready for SOS messages and calls.
 - **Safe Places** — Discovers nearby hospitals, police stations, and fire stations in a crisis.
 - **Legal Help** — Quick access to legal resources and support contacts when you need them.
 - **Fake Call** — Simulates an incoming call to discreetly escape uncomfortable situations.
 
 ## 🔐 Privacy by Architecture
 
-Rakshya encrypts all sensitive data on-device with **AES-256-GCM**, with keys stored in the **Android Keystore**. The backend stores only opaque encrypted blobs and never sees plaintext:
+Rakshyaa encrypts contacts, location history, and videos on-device with **AES-256-GCM**, with keys stored in the **Android Keystore**:
 
 1. **Encrypt on device** — Sensitive data is encrypted with AES-256-GCM using keys held in the Android Keystore.
-2. **Send only blobs** — Only opaque encrypted blobs travel to the server, never readable plaintext.
-3. **Own your backend** — A self-hosted **Node.js + Express + SQLite** backend you control stores the encrypted bytes for backup and sync.
+2. **Back up only ciphertext** — Optional backups upload only encrypted files. Account profiles and SOS incident reports are stored readably so they can be used.
+3. **Secure cloud** — A **Cloudflare Workers + D1** backend, with encrypted files stored privately on **Cloudinary**. See the [Privacy Policy](https://rakshyaapp.github.io/privacy-policy.html).
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript
 - **Hosting:** GitHub Pages
-- **App Backend:** Node.js, Express, SQLite (self-hosted)
+- **App Backend:** Cloudflare Workers (Hono, TypeScript), Cloudflare D1, Cloudinary
 - **App Security:** AES-256-GCM on-device encryption, Android Keystore
 
 ## 📂 Project Structure
@@ -45,29 +44,22 @@ Rakshya encrypts all sensitive data on-device with **AES-256-GCM**, with keys st
 ├── robots.txt     # Search engine crawling rules
 ├── sitemap.xml    # Site map for SEO
 ├── googlea5b6745752877e72.html  # Google site verification
+├── google0223efe922a66e9d.html  # Google site verification (Cloud project owner)
 ├── .gitignore     # Git ignore rules
 └── LICENSE        # MIT License
 ```
 
 ## 📥 How to Install (For Users)
 
-1. Navigate to the **[Releases](https://github.com/rakshyaapp/rakshyaapp.github.io/releases)** section.
-2. Download the latest `.apk` file (currently **v1.1.0**).
-3. On your Android device, enable "Install from Unknown Sources" in settings.
-4. Open the file and follow the installation prompts.
-
-> iOS support is coming soon.
+Install Rakshyaa from [Google Play](https://play.google.com/store/apps/details?id=com.rakshyaa.rakshyaa). Rakshyaa is Android-only.
 
 ## 🗺️ Roadmap
 
 | Version | Status  | Scope                                             |
 | ------- | ------- | ------------------------------------------------- |
-| v1.1    | **Live**  | Google sign-in, self-hosted backend, on-device encryption |
-| v1.2    | Next    | Restore SOS screen and live location tracking        |
-| v1.3    | Planned | Restore ride monitoring and safety check-ins         |
-| v1.4    | Planned | Restore emergency contacts and encrypted video capture |
-| v1.5    | Planned | Restore safe places, legal help, and fake call       |
-| v2.0    | Planned | Production hardening, release signing, Play Store     |
+| v1.2        | **Live** | All safety tools, Google sign-in, encrypted backup |
+| Google Play | Next     | Public release on the Google Play Store |
+| Reliability | Planned  | Restart-safe check-in timers; retries for incident reports and video backups |
 
 ## 🤝 Contributing
 
