@@ -44,6 +44,7 @@ Rakshyaa encrypts contacts, location history, and videos on-device with **AES-25
 ├── robots.txt     # Search engine crawling rules
 ├── sitemap.xml    # Site map for SEO
 ├── googlea5b6745752877e72.html  # Google site verification
+├── google0223efe922a66e9d.html  # Google site verification (Cloud project owner)
 ├── .gitignore     # Git ignore rules
 └── LICENSE        # MIT License
 ```
