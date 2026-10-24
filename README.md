@@ -1,6 +1,6 @@
-# Rakshya App Landing Page 🛡️
+# Rakshyaa App Landing Page 🛡️
 
-The official landing page for **Rakshya**, hosted at [rakshyaapp.github.io](https://rakshyaapp.github.io). Rakshya is a global personal safety app that combines SOS alerts, voice triggers, live location tracking, and encrypted emergency response. This site is the central hub for users to learn about the app, watch the demo, and download the latest Android release.
+The official landing page for **Rakshyaa**, hosted at [rakshyaapp.github.io](https://rakshyaapp.github.io). Rakshyaa is a global personal safety app that combines SOS alerts, voice triggers, live location tracking, and encrypted emergency response. This site is the central hub for users to learn about the app, watch the demo, and download the latest Android release.
 
 ## 🚀 Features
 
@@ -17,7 +17,7 @@ The official landing page for **Rakshya**, hosted at [rakshyaapp.github.io](http
 
 ## 🔐 Privacy by Architecture
 
-Rakshya encrypts all sensitive data on-device with **AES-256-GCM**, with keys stored in the **Android Keystore**. The backend stores only opaque encrypted blobs and never sees plaintext:
+Rakshyaa encrypts all sensitive data on-device with **AES-256-GCM**, with keys stored in the **Android Keystore**. The backend stores only opaque encrypted blobs and never sees plaintext:
 
 1. **Encrypt on device** — Sensitive data is encrypted with AES-256-GCM using keys held in the Android Keystore.
 2. **Send only blobs** — Only opaque encrypted blobs travel to the server, never readable plaintext.
