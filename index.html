@@ -42,6 +42,7 @@
   <!-- Icons & Stylesheets -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
+  <script>try{var t=localStorage.getItem("rakshya-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 
   <!-- Structured Data (Schema.org) -->
   <script type="application/ld+json">
@@ -142,21 +143,43 @@
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow">Rakshyaa v1.2 for Android</p>
-          <h1>Safety. Reimagined.</h1>
+          <h1>Safety. <span>Reimagined.</span></h1>
           <p class="subtext">
             Personal safety tools for urgent moments: an SOS countdown that prepares messages and calls
             for your trusted contacts, live location tracking, and encrypted video evidence.
           </p>
           <div class="hero-actions">
             <a href="#download" class="btn btn-primary">Get Rakshyaa</a>
-            <a href="#demo" class="btn btn-secondary">Watch Demo</a>
+            <a href="#demo" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+              Watch Demo
+            </a>
           </div>
+          <ul class="hero-facts">
+            <li>Works without an account</li>
+            <li>AES-256 on-device encryption</li>
+            <li>Nothing sent without you</li>
+          </ul>
         </div>
         <div class="hero-device-wrap reveal">
           <div class="device-glow"></div>
           <div class="phone-tilt" id="phoneTilt">
             <div class="phone-shell">
-              <video src="demo.mp4" autoplay muted loop playsinline aria-label="Rakshyaa app demo"></video>
+              <video
+                src="demo.mp4"
+                poster="assets/screens/home.webp"
+                muted
+                playsinline
+                preload="auto"
+                data-autoplay
+                data-start="11"
+                data-end="126"
+                aria-label="Rakshyaa app walkthrough"
+              ></video>
+              <div class="sos-chip" aria-hidden="true">
+                <span class="sos-dot"></span>
+                <div><strong>SOS ready</strong><span>Cancellable countdown</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -168,29 +191,47 @@
         <div class="story-sticky container">
           <div class="story-media">
             <div class="story-device">
-              <video src="demo.mp4" autoplay muted loop playsinline></video>
+              <video
+                id="storyVideo"
+                src="demo.mp4"
+                poster="assets/screens/sos.webp"
+                muted
+                playsinline
+                preload="none"
+                aria-label="Rakshyaa app clip for the current step"
+              ></video>
             </div>
           </div>
           <div class="story-copy-panel">
             <p class="story-label">Response Timeline</p>
             <div class="story-slides" id="storySlides">
-              <article class="story-slide">
+              <article class="story-slide is-active" data-start="96" data-end="106">
+                <span class="step-num">01 / 04</span>
                 <h2>One tap starts SOS</h2>
                 <p>A cancellable countdown starts SOS, records your location, and prepares a message and call for your trusted contacts.</p>
               </article>
-              <article class="story-slide">
+              <article class="story-slide" data-start="106" data-end="118">
+                <span class="step-num">02 / 04</span>
                 <h2>You stay in control</h2>
                 <p>Nothing is sent without you. You choose whether to send each SMS or place each call.</p>
               </article>
-              <article class="story-slide">
-                <h2>Evidence you can keep</h2>
-                <p>Record video that is encrypted on your device the moment you stop recording.</p>
+              <article class="story-slide" data-start="19" data-end="38">
+                <span class="step-num">03 / 04</span>
+                <h2>Trusted people, ready</h2>
+                <p>Your emergency contacts are kept in an encrypted list, so the right people are one tap away when SOS starts.</p>
               </article>
-              <article class="story-slide">
+              <article class="story-slide" data-start="63" data-end="76">
+                <span class="step-num">04 / 04</span>
                 <h2>Live intelligence follows you</h2>
                 <p>Location tracking, ride monitoring, and nearby safe places keep you aware of your surroundings.</p>
               </article>
             </div>
+            <ol class="story-steps" aria-hidden="true">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ol>
           </div>
         </div>
       </div>
@@ -201,39 +242,48 @@
         <p class="eyebrow reveal">System Features</p>
         <h2 class="section-title reveal">Designed for real-world emergencies.</h2>
         <div class="feature-grid">
-          <article class="feature-card reveal">
+          <article class="feature-card is-sos reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v5M12 16h.01"/></svg></span>
             <h3>Smart SOS</h3>
             <p>A cancellable countdown that prepares an SMS with your location and a call to your trusted contacts.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></span>
             <h3>Evidence Recording</h3>
             <p>Record video that is encrypted on your device, with optional encrypted cloud backup.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
             <h3>Live Tracking</h3>
             <p>Record your location in the foreground or background and keep a private history.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 17h14v-5l-2-5H7l-2 5z"/><path d="M5 12h14"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/></svg></span>
             <h3>Ride Monitoring</h3>
             <p>Track a ride and get alerted when your route moves away from where you have been.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
             <h3>Check-in System</h3>
             <p>Schedule a check-in. If you miss it, the app reminds you to message your contacts.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></span>
             <h3>Emergency Contacts</h3>
             <p>An encrypted list of trusted people, ready for SOS messages and calls.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span>
             <h3>Safe Places</h3>
             <p>Discovers nearby hospitals, police stations, and fire stations in a crisis.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 8h14"/><path d="M5 8l-2.5 6a2.5 2.5 0 0 0 5 0zM19 8l-2.5 6a2.5 2.5 0 0 0 5 0z"/></svg></span>
             <h3>Legal Help</h3>
             <p>Quick access to legal resources and support contacts when you need them.</p>
           </article>
           <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
             <h3>Fake Call</h3>
             <p>Simulates an incoming call to discreetly escape uncomfortable situations.</p>
           </article>
@@ -281,16 +331,42 @@
     </section>
 
     <section id="demo" class="demo section">
-      <div class="container reveal">
-        <p class="eyebrow">Product Demo</p>
-        <h2 class="section-title">See Rakshyaa in motion.</h2>
-        <div class="hero-device-wrap reveal">
-          <div class="device-glow"></div>
-          <div class="phone-tilt" id="phoneTiltDemo">
-            <div class="mini">
-              <video src="demo.mp4" autoplay muted loop playsinline aria-label="Rakshyaa app demo"></video>
+      <div class="container">
+        <p class="eyebrow reveal">Product Demo</p>
+        <h2 class="section-title reveal">See Rakshyaa in motion.</h2>
+        <p class="section-lead reveal">A two-minute walkthrough recorded on a real Android device. Jump to any part of the app.</p>
+        <div class="demo-layout">
+          <div class="demo-stage reveal" id="demoStage">
+            <div class="demo-device">
+              <video
+                id="demoVideo"
+                src="demo.mp4"
+                poster="assets/screens/home.webp"
+                muted
+                playsinline
+                preload="none"
+                aria-label="Rakshyaa full app demo"
+              ></video>
+              <button class="demo-play" id="demoPlay" type="button" aria-label="Play demo">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
             </div>
+            <div class="demo-progress" id="demoProgress" role="slider" aria-label="Seek demo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span></span></div>
+            <p class="demo-time" id="demoTime">0:00 / 2:10</p>
           </div>
+          <ol class="demo-chapters reveal" id="demoChapters">
+            <li><button class="demo-chapter" type="button" data-time="7"><time>0:07</time><strong>Sign in</strong><span>Google, or stay on this device</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="11"><time>0:11</time><strong>Home hub</strong><span>Every tool, one tap away</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="19"><time>0:19</time><strong>Emergency contacts</strong><span>Add the people you trust</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="43"><time>0:43</time><strong>Safe places</strong><span>Hospitals and police nearby</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="53"><time>0:53</time><strong>Legal help</strong><span>Helplines and your rights</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="63"><time>1:03</time><strong>Location tracking</strong><span>Private, encrypted history</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="81"><time>1:21</time><strong>Check-ins</strong><span>Confirm you are safe</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="91"><time>1:31</time><strong>Fake call</strong><span>A discreet way out</span></button></li>
+            <li><button class="demo-chapter is-sos" type="button" data-time="96"><time>1:36</time><strong>SOS</strong><span>Countdown, SMS and dialer</span></button></li>
+            <li><button class="demo-chapter" type="button" data-time="119"><time>1:59</time><strong>Settings</strong><span>Backup, sync and privacy</span></button></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -298,27 +374,14 @@
     <section id="screens" class="screens section">
       <div class="container">
         <p class="eyebrow reveal">Inside Rakshyaa</p>
-        <h2 class="section-title reveal">A look at the screen you rely on.</h2>
-        <p class="screens-subtext reveal">
-          Rakshyaa is built around fast, calm interactions. Here's a preview of the core screens.
+        <h2 class="section-title reveal">A look at the screens you rely on.</h2>
+        <p class="section-lead reveal">
+          Rakshyaa is built around fast, calm interactions. These are the core screens, straight from the app.
         </p>
         <div class="screens-grid">
           <figure class="screen-card reveal">
-            <div class="screen-frame phone">
-              <div class="screen-ph">
-                <span>Login</span>
-              </div>
-            </div>
-            <figcaption>
-              <h3>Secure sign-in</h3>
-              <p>Sign in with Google, or continue on this device without an account.</p>
-            </figcaption>
-          </figure>
-          <figure class="screen-card reveal">
-            <div class="screen-frame phone">
-              <div class="screen-ph">
-                <span>Home</span>
-              </div>
+            <div class="screen-frame">
+              <img src="assets/screens/home.webp" alt="Rakshyaa home screen with a Need help now card and a grid of safety tools" width="450" height="1000" loading="lazy" />
             </div>
             <figcaption>
               <h3>Feature hub</h3>
@@ -326,10 +389,17 @@
             </figcaption>
           </figure>
           <figure class="screen-card reveal">
-            <div class="screen-frame phone">
-              <div class="screen-ph">
-                <span>Track</span>
-              </div>
+            <div class="screen-frame">
+              <img src="assets/screens/sos.webp" alt="SOS Active screen with deactivate button and options to prepare an SMS or open the dialer" width="450" height="1000" loading="lazy" />
+            </div>
+            <figcaption>
+              <h3>SOS, on your terms</h3>
+              <p>Prepare an SMS or open the dialer for your trusted contacts. You send it.</p>
+            </figcaption>
+          </figure>
+          <figure class="screen-card reveal">
+            <div class="screen-frame">
+              <img src="assets/screens/track.webp" alt="Location Tracking screen with a stop tracking button" width="450" height="1000" loading="lazy" />
             </div>
             <figcaption>
               <h3>Live location</h3>
@@ -337,10 +407,8 @@
             </figcaption>
           </figure>
           <figure class="screen-card reveal">
-            <div class="screen-frame phone">
-              <div class="screen-ph">
-                <span>Contacts</span>
-              </div>
+            <div class="screen-frame">
+              <img src="assets/screens/contacts.webp" alt="Emergency Contacts screen listing a trusted contact with call and message actions" width="450" height="1000" loading="lazy" />
             </div>
             <figcaption>
               <h3>Emergency contacts</h3>
@@ -372,7 +440,7 @@
       <div class="container">
         <p class="eyebrow reveal">Roadmap</p>
         <h2 class="section-title reveal">Where Rakshyaa is heading.</h2>
-        <p class="roadmap-subtext reveal">
+        <p class="section-lead reveal">
           Rakshyaa v1.2 brings every safety tool back together. Here's what comes next.
         </p>
         <div class="roadmap-grid">
@@ -404,7 +472,7 @@
           what it does, why it matters, and how the system is evolving.
         </p>
         <div class="blog-actions reveal">
-          <a class="btn btn-primary" href="#hero">Live Demo</a>
+          <a class="btn btn-primary" href="#demo">Watch the Demo</a>
           <a class="btn btn-secondary" href="https://github.com/proobker/rakshyaa">GitHub Repo</a>
         </div>
       </div>
@@ -421,7 +489,7 @@
             with AES-256-GCM, and optional cloud backups contain only encrypted data.
           </p>
           <div class="inline-links">
-            <a href="#hero">👉 Live Demo</a>
+            <a href="#demo">👉 Watch the Demo</a>
             <a href="https://github.com/proobker/rakshyaa">👉 GitHub Repo</a>
           </div>
         </article>
@@ -696,7 +764,7 @@
             <h3>Product</h3>
             <ul>
               <li><a href="#features">Features</a></li>
-              <li><a href="#demo">App</a></li>
+              <li><a href="#demo">Demo</a></li>
             </ul>
           </div>
           <div class="footer-col">

@@ -2,28 +2,81 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const navbar = document.querySelector(".navbar");
   const hero = document.querySelector("#hero");
-  const story = document.querySelector("#story");
   const storyTrack = document.querySelector(".story-track");
   const slides = Array.from(document.querySelectorAll(".story-slide"));
+  const storySteps = Array.from(document.querySelectorAll(".story-steps li"));
+  const storyVideo = document.querySelector("#storyVideo");
   const phoneTilt = document.querySelector("#phoneTilt");
   const deviceGlow = document.querySelector(".device-glow");
   const revealNodes = document.querySelectorAll(".reveal");
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  const footer = document.querySelector(".rakshya-footer");
-  const ctaWrap = document.querySelector(".footer-cta-wrap");
   const navToggle = document.querySelector("#navToggle");
   const navLinks = document.querySelector("#navLinks");
   const themeToggle = document.querySelector("#themeToggle");
 
-  let targetScroll = window.scrollY;
-  let smoothScroll = targetScroll;
-  let rafId = null;
-
   const tiltTarget = { x: 0, y: 0 };
   const tiltCurrent = { x: 0, y: 0 };
+  let activeSlide = -1;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const lerp = (start, end, alpha) => start + (end - start) * alpha;
+  const formatTime = (seconds) => {
+    const s = Math.max(0, Math.floor(seconds));
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  };
+
+  // Plays a muted clip, ignoring the rejection browsers raise when autoplay is blocked.
+  const safePlay = (video) => {
+    const result = video.play();
+    if (result && typeof result.catch === "function") result.catch(() => {});
+  };
+
+  // Keeps a video looping inside [data-start, data-end] instead of the whole file.
+  function bindSegment(video) {
+    const segment = () => ({
+      start: parseFloat(video.dataset.start) || 0,
+      end: parseFloat(video.dataset.end) || video.duration || Infinity,
+    });
+
+    const toStart = () => {
+      video.currentTime = segment().start;
+    };
+
+    if (video.readyState >= 1) toStart();
+    else video.addEventListener("loadedmetadata", toStart, { once: true });
+
+    video.addEventListener("timeupdate", () => {
+      const { start, end } = segment();
+      if (video.currentTime >= end || video.currentTime < start - 0.5) video.currentTime = start;
+    });
+
+    video.addEventListener("ended", () => {
+      toStart();
+      safePlay(video);
+    });
+  }
+
+  // Videos only play while visible, which saves battery and bandwidth.
+  function setupVideoVisibility(videos) {
+    if (!videos.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          video.dataset.inView = entry.isIntersecting ? "1" : "";
+          if (!entry.isIntersecting) {
+            video.pause();
+          } else if (!prefersReducedMotion && video.dataset.userPaused !== "1") {
+            safePlay(video);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  }
 
   function setupAnchorScroll() {
     anchorLinks.forEach((link) => {
@@ -86,6 +139,10 @@
         setMenuState(false);
       }
     });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenuState(false);
+    });
   }
 
   function setupQaAccordion() {
@@ -107,19 +164,15 @@
     if (!themeToggle) return;
 
     const STORAGE_KEY = "rakshya-theme";
+    // The inline <head> script has usually set this already, which avoids a flash of the wrong theme.
+    const preset = document.documentElement.getAttribute("data-theme");
     const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    const stored = (() => {
-      try {
-        return localStorage.getItem(STORAGE_KEY);
-      } catch (e) {
-        return null;
-      }
-    })();
-    const initial = stored === "light" || (stored === null && prefersLight) ? "light" : "dark";
+    const initial = preset || (prefersLight ? "light" : "dark");
 
-    const applyTheme = (theme) => {
+    const applyTheme = (theme, persist) => {
       document.documentElement.setAttribute("data-theme", theme);
       themeToggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+      if (!persist) return;
       try {
         localStorage.setItem(STORAGE_KEY, theme);
       } catch (e) {
@@ -127,11 +180,11 @@
       }
     };
 
-    applyTheme(initial);
+    applyTheme(initial, false);
 
     themeToggle.addEventListener("click", () => {
       const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-      applyTheme(next);
+      applyTheme(next, true);
     });
   }
 
@@ -142,8 +195,8 @@
       const rect = phoneTilt.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
-      tiltTarget.y = (x - 0.5) * 15;
-      tiltTarget.x = (0.5 - y) * 15;
+      tiltTarget.y = (x - 0.5) * 14;
+      tiltTarget.x = (0.5 - y) * 14;
     });
 
     phoneTilt.addEventListener("pointerleave", () => {
@@ -152,69 +205,165 @@
     });
   }
 
+  function setStoryClip(slide) {
+    if (!storyVideo) return;
+    storyVideo.dataset.start = slide.dataset.start;
+    storyVideo.dataset.end = slide.dataset.end;
+    if (storyVideo.readyState >= 1) {
+      storyVideo.currentTime = parseFloat(slide.dataset.start) || 0;
+    } else if (prefersReducedMotion && activeSlide > 0) {
+      // Without autoplay, load anyway so each step still shows its own still frame.
+      storyVideo.preload = "auto";
+    }
+  }
+
   function updateStorySlides(progress) {
     if (!slides.length) return;
 
-    const segment = 1 / slides.length;
+    const scaled = progress * slides.length;
+    const index = clamp(Math.floor(scaled), 0, slides.length - 1);
 
-    slides.forEach((slide, index) => {
-      const center = segment * index + segment * 0.5;
-      const distance = Math.abs(progress - center);
-      const influence = clamp(1 - distance / (segment * 1.2), 0, 1);
-      const opacity = 0.15 + influence * 0.85;
-      const scale = 0.95 + influence * 0.05;
-      const yShift = 24 - influence * 24;
+    storySteps.forEach((step, i) => {
+      step.style.setProperty("--fill", clamp(scaled - i, 0, 1).toFixed(3));
+    });
 
-      slide.style.opacity = opacity.toFixed(3);
-      slide.style.transform = `translate3d(0, ${yShift.toFixed(2)}px, 0) scale(${scale.toFixed(4)})`;
-      slide.classList.toggle("is-active", influence > 0.62);
+    if (index === activeSlide) return;
+    activeSlide = index;
+    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+    setStoryClip(slides[index]);
+  }
+
+  function setupDemoPlayer() {
+    const stage = document.querySelector("#demoStage");
+    const video = document.querySelector("#demoVideo");
+    if (!stage || !video) return;
+
+    const playButton = document.querySelector("#demoPlay");
+    const progress = document.querySelector("#demoProgress");
+    const timeLabel = document.querySelector("#demoTime");
+    const chapters = Array.from(document.querySelectorAll(".demo-chapter"));
+    const chapterTimes = chapters.map((chapter) => parseFloat(chapter.dataset.time) || 0);
+    const firstChapter = chapterTimes[0] || 0;
+    let started = false;
+
+    const seek = (time) => {
+      started = true;
+      video.currentTime = time;
+    };
+
+    const play = () => {
+      video.dataset.userPaused = "";
+      if (!started && video.readyState >= 1) seek(firstChapter);
+      safePlay(video);
+    };
+
+    const togglePlay = () => {
+      if (video.paused) {
+        play();
+      } else {
+        video.dataset.userPaused = "1";
+        video.pause();
+      }
+    };
+
+    video.addEventListener("loadedmetadata", () => {
+      if (!started) seek(firstChapter);
+    });
+
+    video.addEventListener("play", () => {
+      stage.classList.add("is-playing");
+      playButton.setAttribute("aria-label", "Pause demo");
+    });
+
+    video.addEventListener("pause", () => {
+      stage.classList.remove("is-playing");
+      playButton.setAttribute("aria-label", "Play demo");
+    });
+
+    video.addEventListener("ended", () => {
+      seek(firstChapter);
+      safePlay(video);
+    });
+
+    video.addEventListener("timeupdate", () => {
+      const duration = video.duration || 1;
+      const ratio = video.currentTime / duration;
+      progress.style.setProperty("--p", ratio.toFixed(4));
+      progress.setAttribute("aria-valuenow", Math.round(ratio * 100));
+      timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration || 0)}`;
+
+      let current = 0;
+      chapterTimes.forEach((time, i) => {
+        if (video.currentTime >= time - 0.25) current = i;
+      });
+      chapters.forEach((chapter, i) => {
+        const isCurrent = i === current;
+        chapter.classList.toggle("is-active", isCurrent);
+        if (isCurrent) chapter.setAttribute("aria-current", "true");
+        else chapter.removeAttribute("aria-current");
+      });
+    });
+
+    playButton.addEventListener("click", togglePlay);
+    video.addEventListener("click", togglePlay);
+
+    chapters.forEach((chapter, i) => {
+      chapter.addEventListener("click", () => {
+        if (video.readyState < 1) video.load();
+        const go = () => {
+          seek(chapterTimes[i]);
+          play();
+        };
+        if (video.readyState >= 1) go();
+        else video.addEventListener("loadedmetadata", go, { once: true });
+      });
+    });
+
+    const seekFromPointer = (event) => {
+      if (!video.duration) return;
+      const rect = progress.getBoundingClientRect();
+      seek(clamp((event.clientX - rect.left) / rect.width, 0, 1) * video.duration);
+    };
+
+    progress.addEventListener("click", seekFromPointer);
+    progress.addEventListener("keydown", (event) => {
+      if (!video.duration) return;
+      if (event.key === "ArrowRight") seek(Math.min(video.duration, video.currentTime + 5));
+      if (event.key === "ArrowLeft") seek(Math.max(0, video.currentTime - 5));
     });
   }
 
   function animate() {
-    targetScroll = window.scrollY || window.pageYOffset;
-    smoothScroll = prefersReducedMotion ? targetScroll : lerp(smoothScroll, targetScroll, 0.1);
+    const scrollY = window.scrollY || window.pageYOffset;
 
     if (navbar) {
-      navbar.classList.toggle("scrolled", smoothScroll > 20);
+      navbar.classList.toggle("scrolled", scrollY > 20);
     }
 
-    if (hero) {
+    if (hero && phoneTilt) {
       const heroRect = hero.getBoundingClientRect();
       const heroHeight = hero.offsetHeight || 1;
       const depth = clamp((-heroRect.top / heroHeight) * 32, 0, 32);
 
-      if (phoneTilt) {
-        tiltCurrent.x = prefersReducedMotion ? 0 : lerp(tiltCurrent.x, tiltTarget.x, 0.12);
-        tiltCurrent.y = prefersReducedMotion ? 0 : lerp(tiltCurrent.y, tiltTarget.y, 0.12);
+      tiltCurrent.x = prefersReducedMotion ? 0 : lerp(tiltCurrent.x, tiltTarget.x, 0.12);
+      tiltCurrent.y = prefersReducedMotion ? 0 : lerp(tiltCurrent.y, tiltTarget.y, 0.12);
 
-        phoneTilt.style.transform =
-          `translate3d(0, ${(-depth).toFixed(2)}px, 0) rotateX(${tiltCurrent.x.toFixed(2)}deg) rotateY(${tiltCurrent.y.toFixed(2)}deg)`;
-      }
+      phoneTilt.style.transform =
+        `translate3d(0, ${(-depth).toFixed(2)}px, 0) rotateX(${tiltCurrent.x.toFixed(2)}deg) rotateY(${tiltCurrent.y.toFixed(2)}deg)`;
 
       if (deviceGlow) {
         deviceGlow.style.transform = `translate3d(0, ${(-depth * 0.7).toFixed(2)}px, -40px) scale(${(1 + depth * 0.003).toFixed(3)})`;
       }
     }
 
-    if (story && storyTrack) {
+    if (storyTrack) {
       const rect = storyTrack.getBoundingClientRect();
       const available = Math.max(rect.height - window.innerHeight, 1);
       const consumed = clamp(-rect.top, 0, available);
-      const progress = consumed / available;
-      story.style.setProperty("--story-progress", progress.toFixed(3));
-      updateStorySlides(progress);
+      updateStorySlides(consumed / available);
     }
 
-    rafId = requestAnimationFrame(animate);
-  }
-
-  function onScrollPassive() {
-    targetScroll = window.scrollY || window.pageYOffset;
-  }
-
-  function onResize() {
-    targetScroll = window.scrollY || window.pageYOffset;
+    requestAnimationFrame(animate);
   }
 
   setupAnchorScroll();
@@ -223,35 +372,11 @@
   setupMobileNav();
   setupQaAccordion();
   setupThemeToggle();
+  setupDemoPlayer();
 
-  if (footer) {
-    window.addEventListener(
-      "load",
-      () => {
-        footer.classList.add("is-loaded");
-      },
-      { passive: true }
-    );
-  }
+  const loopingVideos = Array.from(document.querySelectorAll("video[data-autoplay], #storyVideo"));
+  loopingVideos.forEach(bindSegment);
+  setupVideoVisibility(loopingVideos);
 
-  if (ctaWrap && !prefersReducedMotion) {
-    ctaWrap.addEventListener("pointermove", (event) => {
-      const rect = ctaWrap.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
-      ctaWrap.style.setProperty("--cta-x", `${x.toFixed(2)}%`);
-      ctaWrap.style.setProperty("--cta-y", `${y.toFixed(2)}%`);
-    });
-
-    ctaWrap.addEventListener("pointerleave", () => {
-      ctaWrap.style.setProperty("--cta-x", "50%");
-      ctaWrap.style.setProperty("--cta-y", "50%");
-    });
-  }
-
-  window.addEventListener("scroll", onScrollPassive, { passive: true });
-  window.addEventListener("resize", onResize, { passive: true });
-
-  if (rafId) cancelAnimationFrame(rafId);
   animate();
 })();

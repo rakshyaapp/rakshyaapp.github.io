@@ -38,7 +38,8 @@ Rakshyaa encrypts contacts, location history, and videos on-device with **AES-25
 ├── data-policy.html     # Data Policy page
 ├── styles.css     # UI styling (includes blog + Q/A styles)
 ├── script.js      # Frontend logic
-├── demo.mp4       # Video demonstration of the app
+├── demo.mp4       # Video demonstration of the app (chapters are timestamped in index.html)
+├── assets/screens/  # App screenshots captured from demo.mp4
 ├── favicon.png    # Site icon
 ├── previewcard.png# Social sharing preview image
 ├── robots.txt     # Search engine crawling rules
